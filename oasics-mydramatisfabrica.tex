@@ -1,0 +1,473 @@
+\documentclass[a4paper,UKenglish]{oasics}
+%This is a template for producing OASIcs articles.
+%See oasics-manual.pdf for further information.
+%for A4 paper format use option "a4paper", for US-letter use option "letterpaper"
+%for british hyphenation rules use option "UKenglish", for american hyphenation rules use option "USenglish"
+
+\usepackage{microtype}%if unwanted, comment out or use option "draft"
+
+\graphicspath{{./graphics/}}%helpful if your graphic files are in another directory
+
+\bibliographystyle{plain}% the recommended bibstyle
+
+
+
+%%%%
+%%%% MACROS
+%%%%
+\newcommand{\mydf}{MyDF}
+\newcommand{\ns}{mdf{:}}
+\newcommand{\sumo}{sumo{:}}
+\newcommand{\class}[1]{{\it#1}}
+\newcommand{\triple}[3]{{\it(\,#1\,\,#2\,\,#3\,)}}
+
+
+% Author macros::begin %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\title{My Dramatis Fabrica : an Ontology for Annotating and Performing Playscripts}
+\titlerunning{My Dramatis Fabrica} %optional, in case that the title is too long; the running title should fit into the top page column
+
+
+\author[1]{Remi Ronfard}
+\author[2]{Federico Uliana}
+\affil[1]{Inria, LJK, University of Grenoble, France\\
+  \texttt{remi.ronfard@inria.fr}}
+\affil[2]{Inria, LIRMM, University of Montpellier, France\\
+  \texttt{federico.uliana@inria.fr}}
+\authorrunning{Ronfard and Uliana}%mandatory. First: Use abbreviated first/middle names. Second (only in severe cases): Use first author plus 'et. al.'
+
+\Copyright{Ronfard and Uliana}%mandatory. OASIcs license is "CC-BY";  http://creativecommons.org/licenses/by/3.0/
+
+\subjclass{Dummy classification -- please refer to \url{http://www.acm.org/about/class/ccs98-html}}% mandatory: Please choose ACM 1998 classifications from http://www.acm.org/about/class/ccs98-html . E.g., cite as "F.1.1 Models of Computation". 
+\keywords{Dummy keywords -- please provide 1--5 keywords}% mandatory: Please provide 1-5 keywords
+% Author macros::end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Editor-only macros:: begin (do not touch as author)%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\serieslogo{}%please provide filename (without suffix)
+\volumeinfo%(easychair interface)
+  {Billy Editor and Bill Editors}% editors
+  {2}% number of editors: 1, 2, ....
+  {Conference/workshop/symposium title on which this volume is based on}% event
+  {1}% volume
+  {1}% issue
+  {1}% starting page number
+\EventShortName{}
+\DOI{10.4230/OASIcs.xxx.yyy.p}% to be completed by the volume editor
+% Editor-only macros::end %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% BEGIN DOCUMENT
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We describe an ontology for annotationg, visualizing and performing play scripts. 
+
+Thoe goal 
+ \end{abstract}
+
+\section{Introduction}
+
+A playscript is a written version of a play or other dramatic composition; used in preparing for a performance.
+
+In this paper, we describe an ontology suitable for annotating playscripts to make them machine-readable.
+This is meant as an initial step for generating virtual dramatic performances by computer.
+
+As a preliminary step, we demonstrate that MDF makes it possible to describe an existing performance
+in the words of the play script.
+
+We briefly present all formalisms at the basis of \mydf.
+
+\smallskip
+The prose storyboard language (PSL) is a formal language for describing movies shot by shot, where each shot is described with a single sentence, like \emph{``Dolly on Brandon after he crosses the door"}.
+The language describes the spatial structure of individual movie frames and their temporal sequence.
+
+\smallskip
+The Movie Script Markup Language (MSML) is a language for describing the structural representation of screen play narrative. A scrip is decomposed in MSML in a set of dialogues and action blocks. For example \emph{``Joe grabs the candle"} or \emph{``Andi says -\emph{I'll make it}-"}. 
+
+\smallskip
+These declarative languages are seen as complementary tools for describing narrative stories. MSML describes the structure of a movie script, while PSL says how to turn it into shots.
+Both languages attempt to formalize how a script can become a movie, by describing actions, entities, and places drawn from a storyworld.
+
+\smallskip
+In 3D animation each storyworld entity is interpreted by a 3D object. 
+
+We call \emph{Automatic Casting (AC)} the problem of providing a set of 3D objects that can be used to interpret storyworld entities described by a script. 
+The key to address this problem is to extend PSL and MSML with explicit connections between storyworld entities and 3D models. 
+
+\smallskip
+A natural approach for doing automatic casting is to associate each storyworld entity with a 3D object, which is retrieved at the moment of the construction of the scene.
+This is however of limited interest because $i)$ it has to be done manually and $ii)$ it lacks the flexibility of selecting \emph{candidate} 3D objects for characters and props based on different criteria. 
+
+\smallskip
+In this work, we present a novel ontology-based approach for automatic casting based on an ontology of storyworld entities and 3D objects.
+
+By introducing functional descriptions of 3D objects, casting-specific inference rules, we obtain a declarative framework that allows to infer which 3D objects are skilled enough (like, real actors!) to play the movie roles.
+
+
+\subsection{Technical issues}
+Does a place contain objects ? Or is it sufficient to state that objects are in a place ?
+
+Relations :
+ 
+Action continues action : previous action by the same agent.
+
+Action follows action : previous action in the play script.
+
+Action resultof action : action which causes this new action
+
+Actor $plays_role$ Character
+
+Prop $stands_for$ Object
+
+StageAction mimics StoryAction
+
+StageLocation  $stands_for$ Place
+
+Performance mimics Story
+
+What is the right way to introduce dramatic entities ? 
+
+
+
+Story entity -> $played_by$ -> StageEntity
+
+Attributs d'un acteur -> liste de skills ? mesh 3D ? 
+
+
+Actor -> MovieActor, TheatreActor, VirtualActor
+
+Prop -> MovieProp, TheatreProp, VirtualProp
+
+StageLocation -> MovieStageLocation, TheatreStageLocation, VirtualStage
+
+StageAction - > MovieAction, TheatreAction, VirtualAction = Animation
+  
+we can add
+
+ScreenAction -> as recorded by a real or virtual camera
+
+ScreenLocation --> as recorded by a real or virtual camera
+
+
+
+
+
+\section{Related work}
+
+MSML describes the structure of a movie script or theatre play \cite{VanRijsselbergen09}
+
+PSL describes movies shot by shot \cite{Ronfard13}
+
+Damiano et al introduce the "drama ontology" \cite{Damiano05}
+
+Eno et al. stress the importance of providing ontology services in virtual reality \cite{Eno11}.
+
+NarrativeML was proposed by as a tool for annotating narrative texts \cite{Mani13}.
+
+
+OntoFilm \cite{Chakravarthy09} is a core ontology for film production which  provides a standardized model which conceptualizes the domain and workflows used at various stages of the film production process starting from pre-production and planning, shooting on set, right through to editing and post-production. 
+
+Cataldi et al. introduced an ontology for representing the dramatic features of narrative media (video, text, audio, etc.), focused on the notions of the character's motivated actions \cite{Cataldi11}.
+
+Carrive used an ontology of film events to generically describe elements of television collections
+and segment their instances (e.g. tv news broadcasts or television series episodes) \cite{Carrive98}.
+
+SUMO is an upper level ontology
+
+The movie ontology MO \footnote{http://www.movieontology.org/}
+aims to provide a controlled vocabulary to semantically describe movie related concepts (e.g., Movie, Genre, Director, Actor) and the corresponding individuals (?Ice Age?, ?Drama?, ?Steven Spielberg? or ?Johnny Depp?. The Web Ontology Language (OWL) is used to specify the MO ontology. Several other ontologies that are provided in the Linked Data cloud are considered and integrated to highly couple the MO ontology with the Linked Data cloud to take advantage of synergy effects.
+
+The Cinema Ontology Project \footnote{http://jedfilm.com/cinema-ontology}
+is a knowledge organization construction project. The goal of the project is to produce an ontology1 , which is a formalized specification, of film domain discourse and knowledge. The film domain includes: individual films and cinema collectively, filmmaking, filmmakers, film industry, and film culture, such as film viewing, film criticism, film study, and film "fandom", etc.  
+
+Cavell's reflection on the ontology of film
+
+Julie Books : The ontology of film
+
+There has been limited work on the structure of stage-plays and screen-plays. 
+
+A founding document in the contemporary study of the screenplay is Claudia Sternberg's "Written for the Screen".
+Other books include Steven Maras's "Screenwriting", Steven Price's  "The Screenplay",  J. J. Murphy's "Me 
+and You and Memento and Fargo" and Jill Nelmes's anthology "Analysing the Screenplay". 
+
+
+
+
+%The screenplay: The American Motion-Picture Screenplay as Text (Stauffenburg, 1997). 
+%: Authorship, Theory and Criticism, J. J. Murphy?s Me and You and Memento and Fargo: How Independent Screenplays Work, %and Jill Nelmes?s anthology Analysing the Screenplay, which includes many essays by members of the group. See also the %affiliated Journal of Screenwriting.
+
+Owl-Blender \footnote{http://sourceforge.net/projects/owl-blender/} takes a properly annotated OWL file as input and outputs a Blender file to create a 3D visualization of the ontology.
+
+The theatre ontology \footnote{http://lukeblaney.co.uk/semweb/theatre} is an ontology for organizing theatrical data.
+
+
+Ujilings describes a system for generating stories in a virtual environments
+based on an ontology of events and objects \cite{Uijlings06}.
+
+Cua et al \cite{Cua10} use SUMO to represent storytelling knowledge and 
+query actions and events that may take place in a story.
+
+\section{\mydf\ Ontology}
+Storyworld entities and 3D objects in the \mydf\ ontology are now described.
+
+\smallskip
+In the spirit of the Semantic Web, our storyworld ontology is built on the SUMO ontology, in the sense that it \emph{links} and \emph{reuses} part of its vocabulary,  for entities, places, and actions.
+To achieve this, we use as ontological language RDF(S),~the standard for Semantic Web~data.
+
+\smallskip
+An ontology is a formal description of a domain of interest, written by means  of classes, properties, and instances.
+The \mydf\ ontology contains top-level classes like 
+\class{\ns Actor} and 
+\class{\ns Action}. 
+The namespace \emph{\ns} allows to distinguish \mydf\ resources in the Linked Data.
+
+\smallskip
+The RDF(S) language allows to write ontologies by means of triples of the form $\triple{s}{p}{o}$ where $s,p$ and $o$, denote the \emph{subject}, \emph{property} and \emph{object} of the triple, respectively. An example of RDF(S) triple making the correspondence between \mydf\ and SUMO concepts~is 
+$$\triple{\ns Actor}{owl{:}sameAs}{sumo{:}actor}$$
+
+We stress also the fact that building on SUMO also allows our framework to easily deal with synonyms and be multilanguage so as to handle a larger class of movie scripts.
+
+
+\section{Storyworld entities}
+The \mydf\ ontology allows to encapsulate the storyworld entities, namely characters, props, places, and actions, found in a PSL or MSML script. 
+For instance, the PSL instruction 
+\emph{``Dolly on Brandon after he crosses the door"}, indicates three entities: Brandon, a door, and the action of crossing the door. 
+Similarly, the MSML annotation 
+\emph{``Joe grabs the candle"}, indicates Joe, a candle, and the action of grabbing the candle.
+
+\smallskip
+How are these classified in the \mydf\ ontology?
+
+\subsection{Story characters}
+Characters like Brandon of Joe are seen as instances of the class \class{\ns Character}. 
+This is denoted by the triple  $\triple{\ns Brandon}{rdf{:}type}{\ns Character}$. 
+The \emph{rdf{:}type} property is used to denote the membership of an element to a class.
+
+\subsection{Story objects}
+Differently from actors, the concepts for the props like the candle or the door, are classes directly drawn from the SUMO ontology. In this case, 
+\class{sumo{:}candle} and 
+\class{sumo{:}door} we also drawn from the SUMO taxonomy the fact that both are subclasses of 
+\class{sumo{:}device},
+\class{sumo{:}artifact}, and
+\class{sumo{:}object}.
+This knowledge is extremely useful for automatic casting. For example, if the scripts says that \emph{``Bob grabs an object and hits his enemy''} the system can suggest a candle as the object needed to play the scene.
+All props drawn from SUMO are organized in a taxonomy whose root concept is 
+\class{\ns Props}.
+
+\subsection{Story places}
+Places are also drawn from SUMO. 
+For example, the PSL instruction 
+``\emph{MCU on Alice as she enters the room}''
+designates a place, which is the \emph{room}.
+The corresponding concept in our ontology will be 
+\class{sumo{:}room}.
+All places drawn from SUMO are organized in a taxonomy whose root concept is 
+\class{\ns Place}.
+ 
+\subsection{Story actions}
+Actions in a script are built around a verb, like \emph{``Joe \emph{grabs} the candle"}.
+As before, we draw from SUMO the concepts that we use to describe actions.
+For instance, we import into \mydf\ the class 
+\class{sumo:grabbing}
+but also its superclass
+\class{sumo:touching}. As for props, this information is crucial for realizing the automatic casting. All concepts of actions are again organized in a taxonomy where the  root concept is 
+\class{\ns Action}.
+
+\subsection{Story events}
+Once characters, props, places, and actions are in place, we can finally describe complex script events. 
+All events are seen as instances of the \class{\ns Event} class. 
+In RDF(S) the event \emph{``Joe grabs the candle in the room"} is translated with the following set of triples.
+
+$$
+\begin{array}{l}
+\triple{\ns act1}{rdf{:}type}{\ns Action}
+\\
+\triple{\ns act1}{\ns doneBy}{\ns Joe}
+\\
+\triple{\ns Joe}{rdf{:}type}{\ns Character}
+\\
+\triple{\ns act1}{\ns actionPerformed}{sumo{:}grabbing}
+\\
+\triple{\ns act1}{\ns receivedBy}{sumo{:}candle}
+\\
+\triple{\ns act1}{\ns where}{sumo{:}room}
+\end{array}
+$$
+
+
+\smallskip
+Each script event is referred by a unique RDF resource, in the example \emph{\ns act1}.
+We then employ several domain-specific properties to denote
+who performs the action (\emph{\ns doneBy}),
+which action is performed (\emph{\ns actionPerformed}), 
+who or what complements the action (\emph{\ns receivedBy}),
+and the place where the action takes place (\emph{\ns where}).
+
+This can also be seen as a graph.
+
+
+
+\smallskip
+It is worth noting that RDF(S) makes easy for our ontology to be compatible with SUMO,   because it allows to refer to classes, properties, and instances with no distinction. With a  description logic approach, it would not be possible for instance to relate an instance with a class with a domain-specific property  like 
+\triple{\ns act1}{\ns actionPerformed}{sumo{:}grabbing},
+ unless looking at formalisms of the higher-order.
+
+
+\section{Stage entities}
+The \mydf\ ontology also describes actors and props on a virtual stage
+with functional description that allow to infer wether they are skilled enough to play a role in the script. 
+
+To illustrate, consider the script indication 
+``\emph{Joe kneels down}''.
+When doing automatic casting, one should search for a 3D object representing a man that  is complex enough so as to perform the action of knelling.
+This may require for instance that the 3D object has a deformable skeleton.
+However, for mimicking simple actions like ``\emph{Bob falls}'' the 3D object can be arbitrarily simple.
+
+\smallskip
+Objects are represented in \mydf\ with sets of triple, in a similar way to actions.
+$$
+\begin{array}{l}
+\triple{\ns obj1}{\ns propertyObject3D}{\ns canRotate}
+\\
+\triple{\ns obj1}{\ns propertyObject3D}{\ns hasSkeleton}
+\\
+\triple{\ns obj1}{\ns describes}{sumo{:}man}\end{array}
+$$
+
+\subsection{Stage actors}
+Stage actors can be real actors or virtual actors
+
+Virtual actors are 3D animated characters that can be used to play a character's part.
+
+Real actors can be theatre actors playing a on theatre stage, 
+or movie actors playing on a movie set.
+
+\subsection{Stage props}
+Virtual props are 3D objects that can be placed on a  virtual stage.
+
+\subsection{Stage locations}
+Real stage location can be locations on a theatre stage, or locations on a movie set.
+
+Virtual stage locations are locations on a virtual stage.
+
+
+\subsection{Stage actions}
+Stage actions are performed by actors depending on their acting skills
+
+Virtual actor performances are 3D animations.
+
+\subsection{Stage events}
+Stage events  are happenings, including stage actions  
+
+
+
+
+
+
+\section{Performing play scripts}
+The general problem of directing a performance is to find correspondences from 
+story events to stage events.
+
+\subsection{Decorating the stage}
+Find correspondences from story places and objects to stage sets and props.
+
+\subsection{Casting actors}
+Once 3D objects are specified, the idea is to define their skills as a consequence of their functional description.
+This is equivalent to writing \emph{casting-rules}  for actors and objects.
+
+For instance, we can say that any 3D object $x$ that has a skeleton can do a downard-motion. 
+This translates into the following inference rule 
+$$
+\triple{x}{\ns propertyObject3D}{\ns hasSkeleton}
+\longrightarrow
+\triple{x}{\ns canMimickAction}{sumo{:} downwardMotion}
+$$
+which is interpreted as follows. The rule makes infer a new RDF triple for each 3D object described in the ontology that has a skeleton. 
+This further allows to query the ontology and retrieve all 3D models that can do a \emph{downward-motion}.
+Moreover, by evaluating the rule 
+$$
+\triple{x}{\ns canMimickAction}{y} , \triple{z}{rdfs{:}subClassOf}{y}
+\longrightarrow
+\triple{x}{\ns canMimickAction}{z}
+$$
+we can infer for instance that any model that can do a downward-motion can do also a more specific mouvement declared as one of its subclasses. By exploiting the SUMO taxonomy, one can infer that any model that has a skeleton can also \emph{kneel-down}, or \emph{fall} or \emph{sitting-down}.
+
+\smallskip
+Notice that this is a declarative approach allow to change any time the \emph{casting rules}, and thus the skills that an object has to meet in order to be a candidate for a role. For instance, having a rich collection of 3D object can permit to have more refined rules, while for a small collection of objects one can aim at putting in place a scene with a minimum number of distinct objects.
+
+\smallskip
+The inference rules we presented are called Datalog rules.
+
+\subsection{Directing actors}
+
+When all story objects, characters and places have been assigned to stage props, actors and settings,
+it becomes possible to translate the story into a dramatic score with  all actor actions synchronized
+together.
+
+Following established practices in the theatre, we define a set of "cues", which act as temporal signals
+for synchronizing actors and events together.
+
+One benefit of our representation is that the director can choose to name "story world entities" or "stage entities",
+and the system can translate between the two representations. If the names are chosen appropriately, the director
+can even mix story and stage entities at will.
+
+More importantly, it is quite straight-forward to reorganize the stage with different props and settings, 
+and to re-cast actors, and automatically update the dramatic score accordingly.
+
+\section{Filming performances}
+When a performance is recorded by a real or virtual camera and projected on a screen,
+it results in screen actions and events.
+
+\subsection{Screen events}
+
+\subsection{Screen actions}
+
+\subsection{Screen locations}
+
+
+
+\section{Experimental results}
+
+We present results on several possible stagings of a short scene 
+from the screenplay (play text) of the movie "back to the future",
+written by Robert Zemekis.
+
+We show examples of stage events reconstructed in 3D animation
+with virtual  actors, props and stages. 
+
+
+We show examples of screen events in an animated  movie generated 
+from this 3D animation. 
+
+We show examples of screen events in the real movie.
+
+Future work will investigate the generation of performances of other play scripts
+borrowed from theatre, motion pictures and 3D animation.
+
+Maybe the opening scene of death of a salesman  ?
+
+Maybe the opening scene of cat on a hot tin roof ?
+
+Maybe the patio scene from notorious ?
+
+Maybe the opening scene of psycho ? 
+
+Maybe a scene from endless night ? 
+
+Maybe a scene from the artist ?
+
+Maybe a scene from "la ronde" ? 
+
+
+\section{Limitations and future work}
+
+\section{Conclusion}
+
+
+%
+% bibliography of drama ontologies ? 
+%
+
+\bibliography{drama_ontology}
+
+
+\end{document}

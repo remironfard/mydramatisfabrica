@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: oasics-mydramatisfabrica.aux
+The style file: plain.bst
+Database file #1: drama_ontology.bib
+You've used 10 entries,
+            2118 wiz_defined-function locations,
+            578 strings with 6316 characters,
+and the built_in function-call counts, 3961 in all, are:
+= -- 414
+> -- 178
+< -- 5
++ -- 71
+- -- 60
+* -- 263
+:= -- 637
+add.period$ -- 37
+call.type$ -- 10
+change.case$ -- 59
+chr.to.int$ -- 0
+cite$ -- 10
+duplicate$ -- 170
+empty$ -- 304
+format.name$ -- 60
+if$ -- 873
+int.to.chr$ -- 0
+int.to.str$ -- 10
+missing$ -- 10
+newline$ -- 53
+num.names$ -- 20
+pop$ -- 66
+preamble$ -- 1
+purify$ -- 50
+quote$ -- 0
+skip$ -- 118
+stack$ -- 0
+substring$ -- 213
+swap$ -- 50
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 38
+warning$ -- 0
+while$ -- 36
+width$ -- 12
+write$ -- 128

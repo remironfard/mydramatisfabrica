@@ -1,0 +1,69 @@
+\begin{thebibliography}{10}
+
+\bibitem{Carrive98}
+Jean Carrive, Francois Pachet, and Remi Ronfard.
+\newblock {Using Description Logics for Indexing Audiovisual Documents}.
+\newblock In {\em {International Workshop on Description Logics (DL '98)}},
+  Trento, Italy, June 1998.
+
+\bibitem{Cataldi11}
+Mario Cataldi, Rossana Damiano, Vincenzo Lombardo, and Antonio Pizzo.
+\newblock Representing dramatic features of stories through an ontological
+  model.
+\newblock In {\em Proceedings of the 4th International Conference on
+  Interactive Digital Storytelling}, ICIDS'11, pages 122--127, Berlin,
+  Heidelberg, 2011. Springer-Verlag.
+
+\bibitem{Chakravarthy09}
+Ajay Chakravarthy, Richard Beales, Nikos Matskanis, and Xiaoyu Yang.
+\newblock Ontofilm: A core ontology for film production.
+\newblock In {\em Proceedings of the 4th International Conference on Semantic
+  and Digital Media Technologies: Semantic Multimedia}, SAMT '09, pages
+  177--181, Berlin, Heidelberg, 2009. Springer-Verlag.
+
+\bibitem{Cua10}
+Jeffrey Cua, Ethel Ong, Ruli Manurung, and Adam Pease.
+\newblock Representing story plans in sumo.
+\newblock In {\em Proceedings of the NAACL HLT 2010 Second Workshop on
+  Computational Approaches to Linguistic Creativity}, CALC '10, pages 40--48,
+  Stroudsburg, PA, USA, 2010. Association for Computational Linguistics.
+
+\bibitem{Damiano05}
+Rossana Damiano, Vincenzo Lombardo, and Antonio Pizzo.
+\newblock Formal encoding of drama ontology.
+\newblock In {\em Proceedings of the Third International Conference on Virtual
+  Storytelling: Using Virtual Reality Technologies for Storytelling}, ICVS'05,
+  pages 95--104, Berlin, Heidelberg, 2005. Springer-Verlag.
+
+\bibitem{Eno11}
+J.D. Eno and C.W. Thompson.
+\newblock Virtual and real-world ontology services.
+\newblock {\em Internet Computing, IEEE}, 15(5):46--52, Sept 2011.
+
+\bibitem{Mani13}
+Inderjeet Mani.
+\newblock {\em Computational Modeling of Narrative}.
+\newblock Synthesis Lectures on Human Language Technologies. Morgan \& Claypool
+  Publishers, 2013.
+
+\bibitem{Ronfard13}
+R\'emi Ronfard, Vineet Gandhi, and Laurent Boiron.
+\newblock The prose storyboard language: A tool for annotating and directing
+  movies.
+\newblock In {\em Workshop on Intelligent Cinematography and Editing,
+  Foundations of Digital Games, May, 2013}, Chania, Crete, Gr\`ece, May 2013.
+  Society for the Advancement of the Science of Digital Games.
+
+\bibitem{Uijlings06}
+J.R.R. Uijlings.
+\newblock Designing a virtual environment for story generation.
+\newblock Master's thesis, University of Amsterdam, 2006.
+
+\bibitem{VanRijsselbergen09}
+Dieter Van~Rijsselbergen, Barbara Van De~Keer, Maarten Verwaest, Erik Mannens,
+  and Rik Van~de Walle.
+\newblock Movie script markup language.
+\newblock In {\em Proceedings of the 9th ACM Symposium on Document
+  Engineering}, DocEng '09, pages 161--170, New York, NY, USA, 2009. ACM.
+
+\end{thebibliography}
